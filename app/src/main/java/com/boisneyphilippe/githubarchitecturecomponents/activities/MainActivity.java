@@ -1,8 +1,8 @@
 package com.boisneyphilippe.githubarchitecturecomponents.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.boisneyphilippe.githubarchitecturecomponents.R;
 import com.boisneyphilippe.githubarchitecturecomponents.fragments.UserProfileFragment;
@@ -10,7 +10,6 @@ import com.boisneyphilippe.githubarchitecturecomponents.fragments.UserProfileFra
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjection;
-import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
 
     // ---
 
-    private void showFragment(Bundle savedInstanceState){
+    private void showFragment(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
 
             UserProfileFragment fragment = new UserProfileFragment();
@@ -52,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
         }
     }
 
-    private void configureDagger(){
+    private void configureDagger() {
         AndroidInjection.inject(this);
     }
 }

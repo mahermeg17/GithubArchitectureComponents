@@ -10,7 +10,6 @@ import javax.inject.Inject;
 
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import dagger.android.support.HasSupportFragmentInjector;
 
 
 /**
@@ -38,7 +37,7 @@ public class App extends Application implements HasActivityInjector {
 
     // ---
 
-    private void initDagger(){
+    private void initDagger() {
         DaggerAppComponent.builder().application(this).build().inject(this);
     }
 }

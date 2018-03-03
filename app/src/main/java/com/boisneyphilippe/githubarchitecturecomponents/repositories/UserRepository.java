@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 import com.boisneyphilippe.githubarchitecturecomponents.App;
 import com.boisneyphilippe.githubarchitecturecomponents.api.UserWebservice;
-import com.boisneyphilippe.githubarchitecturecomponents.database.entity.User;
 import com.boisneyphilippe.githubarchitecturecomponents.database.dao.UserDao;
+import com.boisneyphilippe.githubarchitecturecomponents.database.entity.User;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -68,7 +68,8 @@ public class UserRepository {
                     }
 
                     @Override
-                    public void onFailure(Call<User> call, Throwable t) { }
+                    public void onFailure(Call<User> call, Throwable t) {
+                    }
                 });
             }
         });
@@ -76,7 +77,7 @@ public class UserRepository {
 
     // ---
 
-    private Date getMaxRefreshTime(Date currentDate){
+    private Date getMaxRefreshTime(Date currentDate) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(currentDate);
         cal.add(Calendar.MINUTE, -FRESH_TIMEOUT_IN_MINUTES);

@@ -39,7 +39,9 @@ public class AppModule {
 
     @Provides
     @Singleton
-    UserDao provideUserDao(MyDatabase database) { return database.userDao(); }
+    UserDao provideUserDao(MyDatabase database) {
+        return database.userDao();
+    }
 
     // --- REPOSITORY INJECTION ---
 
@@ -59,7 +61,9 @@ public class AppModule {
     private static String BASE_URL = "https://api.github.com/";
 
     @Provides
-    Gson provideGson() { return new GsonBuilder().create(); }
+    Gson provideGson() {
+        return new GsonBuilder().create();
+    }
 
     @Provides
     Retrofit provideRetrofit(Gson gson) {

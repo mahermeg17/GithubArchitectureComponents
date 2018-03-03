@@ -6,15 +6,12 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.boisneyphilippe.githubarchitecturecomponents.App;
 import com.boisneyphilippe.githubarchitecturecomponents.R;
 import com.boisneyphilippe.githubarchitecturecomponents.database.entity.User;
 import com.boisneyphilippe.githubarchitecturecomponents.view_models.UserProfileViewModel;
@@ -39,12 +36,17 @@ public class UserProfileFragment extends Fragment {
     private UserProfileViewModel viewModel;
 
     // FOR DESIGN
-    @BindView(R.id.fragment_user_profile_image) ImageView imageView;
-    @BindView(R.id.fragment_user_profile_username) TextView username;
-    @BindView(R.id.fragment_user_profile_company) TextView company;
-    @BindView(R.id.fragment_user_profile_website) TextView website;
+    @BindView(R.id.fragment_user_profile_image)
+    ImageView imageView;
+    @BindView(R.id.fragment_user_profile_username)
+    TextView username;
+    @BindView(R.id.fragment_user_profile_company)
+    TextView company;
+    @BindView(R.id.fragment_user_profile_website)
+    TextView website;
 
-    public UserProfileFragment() { }
+    public UserProfileFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,11 +66,11 @@ public class UserProfileFragment extends Fragment {
     // CONFIGURATION
     // -----------------
 
-    private void configureDagger(){
+    private void configureDagger() {
         AndroidSupportInjection.inject(this);
     }
 
-    private void configureViewModel(){
+    private void configureViewModel() {
         String userLogin = getArguments().getString(UID_KEY);
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(UserProfileViewModel.class);
         viewModel.init(userLogin);
@@ -79,8 +81,8 @@ public class UserProfileFragment extends Fragment {
     // UPDATE UI
     // -----------------
 
-    private void updateUI(@Nullable User user){
-        if (user != null){
+    private void updateUI(@Nullable User user) {
+        if (user != null) {
             Glide.with(this).load(user.getAvatar_url()).apply(RequestOptions.circleCropTransform()).into(imageView);
             this.username.setText(user.getName());
             this.company.setText(user.getCompany());
